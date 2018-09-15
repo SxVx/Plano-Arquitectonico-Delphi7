@@ -1,0 +1,236 @@
+unit ScrollBox;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, StdCtrls;
+
+type
+  TPlanoArquitectonico = class(TForm)
+    pnl1: TPanel;
+    Muro: TButton;
+    Ventana: TButton;
+    Mueble: TButton;
+    Mesa: TButton;
+    scrlbx1: TScrollBox;
+    img1: TImage;
+    Estufa: TButton;
+    Lavabo: TButton;
+    Tasa: TButton;
+    Cama: TButton;
+    Cerrar: TButton;
+    Edit1: TEdit;
+    AnexarDisenio: TButton;
+    AbrirDisenio: TButton;
+    SalvarDisenio: TButton;
+    Borrar: TButton;
+    Limpiar: TButton;
+    Repintar: TButton;
+    Autor: TButton;
+    procedure FormCreate(Sender: TObject);
+    procedure MuroClick(Sender: TObject);
+    procedure img1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure img1MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure CerrarClick(Sender: TObject);
+    procedure VentanaClick(Sender: TObject);
+    procedure MuebleClick(Sender: TObject);
+    procedure MesaClick(Sender: TObject);
+    procedure EstufaClick(Sender: TObject);
+    procedure LavaboClick(Sender: TObject);
+    procedure TasaClick(Sender: TObject);
+    procedure CamaClick(Sender: TObject);
+    procedure LimpiarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  PlanoArquitectonico: TPlanoArquitectonico;
+var x1,y1,x2,y2:Integer;
+
+
+implementation
+
+{$R *.dfm}
+
+procedure TPlanoArquitectonico.FormCreate(Sender: TObject);
+var i :Integer;
+begin
+ //Cuadricula
+
+ img1.Canvas.Pen.Color:=clGray;
+
+ for i:=1 to 100 do
+ begin
+   img1.Canvas.MoveTo(20*i,0);
+   img1.Canvas.LineTo(20*i,2000);
+ end;
+ for i:=1 to 100 do
+ begin
+   img1.Canvas.MoveTo(0,20*i);
+   img1.Canvas.LineTo(2000,20*i);
+ end;
+end;
+
+procedure TPlanoArquitectonico.MuroClick(Sender: TObject);
+begin
+  img1.Canvas.Pen.Color:= clRed;
+  img1.Canvas.Pen.Width:= 8;
+  img1.Canvas.MoveTo(x1,y1);
+  img1.Canvas.LineTo(x2,y2);
+  img1.Canvas.Pen.Color:= clBlack;
+  img1.Canvas.Pen.Width:= 1;
+end;
+
+procedure TPlanoArquitectonico.img1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+ x1:=X;
+ y1:=Y;
+
+ if((x1 mod 20)<>0)then
+ begin
+  x1:=x1+20-(x1 mod 20);
+ end;
+
+ if((y1 mod 20)<>0)then
+ begin
+  y1:=y1+20-(y1 mod 20);
+ end;
+
+end;
+
+procedure TPlanoArquitectonico.img1MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  x2:=X;
+  Y2:=Y;
+
+  if((x2 mod 20)<>0)then
+  begin
+    x2:=x2+20-(x2 mod 20);
+  end;
+
+  if((y2 mod 20)<>0)then
+  begin
+    y2:=y2+20-(y2 mod 20);
+  end;
+
+end;
+
+procedure TPlanoArquitectonico.CerrarClick(Sender: TObject);
+begin
+  Close();
+end;
+
+procedure TPlanoArquitectonico.VentanaClick(Sender: TObject);
+begin
+  img1.Canvas.Pen.Color:= clBlack;
+  img1.Canvas.Pen.Width:= 4;
+
+  img1.Canvas.MoveTo(x1,y1);
+  img1.Canvas.LineTo(x2,y2);
+
+  img1.Canvas.Pen.Width:= 1;
+end;
+
+procedure TPlanoArquitectonico.MuebleClick(Sender: TObject);
+begin
+  img1.Canvas.Pen.Color:= RGB(153,76,0);
+  img1.Canvas.Pen.Width:= 2;
+
+  img1.Canvas.Pen.Color:= clBlack;
+  img1.Canvas.Pen.Width:= 1;
+end;
+
+procedure TPlanoArquitectonico.MesaClick(Sender: TObject);
+begin
+  img1.Canvas.Pen.Color:= RGB(153,76,0);
+  img1.Canvas.Pen.Width:= 2;
+
+  img1.Canvas.Pen.Color:= clBlack;
+  img1.Canvas.Pen.Width:= 1;
+end;
+
+procedure TPlanoArquitectonico.EstufaClick(Sender: TObject);
+begin
+  img1.Canvas.Pen.Color:= RGB(153,76,0);
+  img1.Canvas.Pen.Width:= 2;
+
+  img1.Canvas.Pen.Color:= clBlack;
+  img1.Canvas.Pen.Width:= 1;
+end;
+
+procedure TPlanoArquitectonico.LavaboClick(Sender: TObject);
+begin
+  img1.Canvas.Pen.Color:= RGB(153,76,0);
+  img1.Canvas.Pen.Width:= 2;
+
+  img1.Canvas.Pen.Color:= clBlack;
+  img1.Canvas.Pen.Width:= 1;
+end;
+
+procedure TPlanoArquitectonico.TasaClick(Sender: TObject);
+begin
+  img1.Canvas.Pen.Color:= RGB(153,76,0);
+  img1.Canvas.Pen.Width:= 2;
+
+  img1.Canvas.Pen.Color:= clBlack;
+  img1.Canvas.Pen.Width:= 1;
+end;
+
+procedure TPlanoArquitectonico.CamaClick(Sender: TObject);
+begin
+  img1.Canvas.Pen.Color:= RGB(153,76,0);
+  img1.Canvas.Pen.Width:= 2;
+
+  img1.Canvas.Pen.Color:= clBlack;
+  img1.Canvas.Pen.Width:= 1;
+end;
+
+procedure TPlanoArquitectonico.LimpiarClick(Sender: TObject);
+var i:Integer;
+begin
+
+ img1.Canvas.Rectangle(0,0,2000,2000);
+ //Cuadricula
+ img1.Canvas.Pen.Color:=clGray;
+
+ for i:=1 to 100 do
+ begin
+   img1.Canvas.MoveTo(20*i,0);
+   img1.Canvas.LineTo(20*i,2000);
+ end;
+ for i:=1 to 100 do
+ begin
+   img1.Canvas.MoveTo(0,20*i);
+   img1.Canvas.LineTo(2000,20*i);
+ end;
+
+
+end;
+
+
+//ANOTACIONES
+
+//PARA SOLUCIONAR QUE LAS CORDENADAS FUERAN MULTIPLOS DE 20 LAS APROXIMAMOS
+//A SUS PUNTOS X,Y MULTIPLOS DE 20 MAS PROXIMAS POR ENCIMA
+
+
+//CARACTERISTICAS A AGREGAR QUE NO PIDE EL PROEGRAMA:
+//*DESPLAZAR ELEMENTOS ARRASTRANDOLOS
+
+//PREGUNTAR POR LAS CARACTERISTICAS DE LOS ELEMENTOS:
+//MESA DEBE SER RECTANGULAR? PUESTO QUE HAY MESAS CUADRADAS Y REDONDAS, CUAL PREDETERMINO?
+//LA ESTUFA Y EL LAVABO LO MISMO QUE LA MESA PERO SOLO CON FIGURAS CUADRADO Y RECTANGULO
+//LOS MUEBLES PUEDEN SER DE CUALQUIER FORMA YA QUE HAY DIFERENTES TIPOS DE MUEBLE?
+
+
+
+
+end.
